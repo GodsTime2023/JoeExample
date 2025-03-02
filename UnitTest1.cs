@@ -17,7 +17,9 @@ public class Tests
     [Test]
     public void Test1()
     {
-        
+        driver.FindElement(
+            By.XPath("//div[@class='card mt-4 top-card'][.='Elements']")).Click();
+        Assert.That(driver.Url.Contains("elements"), Is.EqualTo(true));
     }
 
     [TearDown]
