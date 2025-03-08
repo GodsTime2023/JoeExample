@@ -14,7 +14,7 @@ namespace Test.TestSuite
         [Test]
         public void ElementsTest()
         {
-            //pascal case = textBox, camel case = TextBox
+            //camel case = textBox, pascal case = TextBox
             var elements = browser.FindElement(By.XPath("//div[@class='category-cards']/div[1]"));
             elements.Click();
 
