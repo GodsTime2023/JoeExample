@@ -33,14 +33,10 @@ public class Hooks
     public void TearDown()
     {
         Thread.Sleep(2000);
-        browser.Quit();
-        browser.Dispose();
+        if (browser != null)
+        {
+            browser.Close();
+            browser.Quit();
+        }
     }
 }
-
-//6.1 Waits for elements
-//Push to git and delete git
-
-//14/03/2025
-//6.2 BDD introduction
-//7. Push to git and delete git

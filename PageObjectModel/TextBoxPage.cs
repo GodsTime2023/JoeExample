@@ -1,11 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.BiDi.Communication;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test.PageObjectModel
 {
@@ -26,7 +20,8 @@ namespace Test.PageObjectModel
         IWebElement output => Driver.FindElement(By.Id("output"));
         IReadOnlyCollection<IWebElement> outputValues =>
                         Driver.FindElements(By.XPath("//div[@id='output']//p"));
-        
+
+
         public bool IsFullNameDisplayed()
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));

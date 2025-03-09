@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using Test.BaseHooks;
 using Test.PageObjectModel;
 
@@ -24,7 +23,6 @@ namespace Test.TestSuite
         [Test]
         public void ElementsTest()
         {
-            //camel case = textBox, pascal case = TextBox
             var elements = browser.FindElement(By.XPath("//div[@class='category-cards']/div[1]"));
             elements.Click();
 
@@ -49,20 +47,21 @@ namespace Test.TestSuite
             Thread.Sleep(2000);
 
             var isOutPutDisplayed = browser.FindElement(By.Id("output")).Displayed;
+            
             //Verification
             Assert.That(isOutPutDisplayed, Is.EqualTo(true));
 
-            //Verify all the test is equal
+            //Verify all the text is equal
             var outPutTexts = browser.FindElements(By.XPath("//div[@id='output']//p"));
-
             string name = outPutTexts[0].Text.Split(":")[1];
-            //actual value
-            //Assert.That(outPutTexts[0].Text.Split(":")[1].Equals("Joe"), Is.True);
-            //Assert.That(outPutTexts[1].Text.Split(":")[1].Equals("abc@test.com"), Is.True);
-            //Assert.That(outPutTexts[2].Text.Split(":")[1].Equals("this is my current address"), Is.True);
-            //Assert.That(outPutTexts[3].Text.Split(":")[1].Equals("this is my parmanent address"), Is.True);
 
-            //Fluent Assertion
+            //Nunit assertion example
+            Assert.That(outPutTexts[0].Text.Split(":")[1].Equals("Joe"), Is.True);
+            Assert.That(outPutTexts[1].Text.Split(":")[1].Equals("abc@test.com"), Is.True);
+            Assert.That(outPutTexts[2].Text.Split(":")[1].Equals("this is my current address"), Is.True);
+            Assert.That(outPutTexts[3].Text.Split(":")[1].Equals("this is my parmanent address"), Is.True);
+
+            //Fluent Assertion example
             outPutTexts[0].Text.Split(":")[1].Should().Be("Joe");
             outPutTexts[1].Text.Split(":")[1].Should().Be("abc@test.com");
             outPutTexts[2].Text.Split(":")[1].Should().Be("this is my current address");
@@ -107,7 +106,8 @@ namespace Test.TestSuite
                 throw new Exception("Condition is not satisfied");
             }
 
-                textBoxPage.IsOutPutDisplayed().Should().BeTrue();
+            textBoxPage.IsOutPutDisplayed().Should().BeTrue();
+
             textBoxPage.IsTextMatching().First().Text.Split(":")[1]
                 .Should().Be("Joe");
             textBoxPage.IsTextMatching().ElementAt(1).Text.Split(":")[1]
